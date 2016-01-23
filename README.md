@@ -3,7 +3,7 @@
 
 
 
-#The plan(according to stan)
+##The plan(according to stan)
 	Create database structure
 		Tables: () = has many, [] = belongs to
 			users: username, password
