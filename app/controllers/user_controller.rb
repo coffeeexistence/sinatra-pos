@@ -32,7 +32,7 @@ class UserController < ApplicationController
 		else
 			if Helpers.valid_login(params) # makes 2 db queries... unnecesary
 				Helpers.login_by_params(params, session)
-				redirect '/tweets' 
+				redirect '/index' 
 			else
 				redirect '/login'
 			end
@@ -58,23 +58,15 @@ class UserController < ApplicationController
 		end
 
 		if Helpers.signup_params_valid?(params)
-			user=User.create(username: params[:username], password: params[:password], email: params[:email])
+			user=User.create(username: params[:username], password: params[:password], shop_name: params[:shop_name])
 			#binding.pry
 			Helpers.login(user, session)
 			#puts session
-			redirect '/tweets'
+			redirect '/'
 		else
 			#puts "INVALID SIGNUP INFO"
 			redirect '/signup'
 		end
-	end
-
-	###################USER SPECIFIC#################################
-
-	get '/users/:slug' do 
-		@user=User.find_by_slug(params[:slug])
-		#binding.pry
-		erb :'user/profile'
 	end
 
 end

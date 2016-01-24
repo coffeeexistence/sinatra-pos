@@ -3,22 +3,6 @@ module Helpers
 		true
 	end
 
-	def self.can_edit?(session, tweet)
-		#binding.pry
-		if session[:id]
-			tweet.user.id==User.find(session[:id]).id
-		else
-			false
-		end
-	end
-
-	def self.modify_tweet(tweet, params)
-		#binding.pry
-		tweet.content=params[:content]
-		tweet.save
-
-	end
-
 	def self.valid_login(params)
 		!!User.find_by(username: params[:username], password: params[:password])
 	end
@@ -41,7 +25,7 @@ module Helpers
 	end
 
 	def self.signup_params_valid?(p)
-		(p[:username]=="" || p[:password]=="" || p[:email]=="") ? false : true
+		(p[:username]=="" || p[:password]=="") ? false : true
 	end
 
 	def self.current_user(session)

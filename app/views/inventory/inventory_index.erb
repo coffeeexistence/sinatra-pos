@@ -1,0 +1,26 @@
+
+<%#binding.pry%>
+
+<h2>Inventory | <a href="/inventory/add"><button type="button" class="btn btn-secondary">Add</button></a></h2>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Description</th>
+        <th>Qty</th>
+      </tr>
+    </thead>
+    <tbody>
+    <%@user.items.all.each do |item| %>
+      <tr>
+        <td><%=item.name%></td>
+        <td><%=item.description%></td>
+        <td><%=item.quantity_available%></td>
+      </tr>
+    <%end%>
+    </tbody>
+  </table>
+
+  <%if @user.items.all.length==0%>
+  Behold! The field in which i grow my inventory items, lay thine eyes upon it, and see that it is barren.
+  <%end%>
