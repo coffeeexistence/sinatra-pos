@@ -1,9 +1,5 @@
 class User < ActiveRecord::Base
-	has_many :customers
-	has_many :customer_sessions
-	has_many :invoices
-	has_many :purchase_records
-	has_many :items
+	has_many :customers, :customer_sessions, :invoices, :items, :purchase_records
 
 	def slug
 		self.username.gsub(" ", "-").downcase
